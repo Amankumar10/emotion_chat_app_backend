@@ -37,12 +37,12 @@ class MessageListCreate(APIView):
         serializer = MessageSerializer(messages, many=True)
         return Response(serializer.data)
 
-    def post(self, request, thread_id):
-        data = request.data.copy()
-        data['sender'] = request.user.id
-        data['thread'] = thread_id
-        serializer = MessageSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+    # def post(self, request, thread_id):
+    #     data = request.data.copy()
+    #     data['sender'] = request.user.id
+    #     data['thread'] = thread_id
+    #     serializer = MessageSerializer(data=data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=201)
+    #     return Response(serializer.errors, status=400)
